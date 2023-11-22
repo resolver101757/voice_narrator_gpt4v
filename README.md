@@ -43,3 +43,7 @@ In another terminal, run the narrator:
 python narrator.py
 ```
 
+## Other installs
+
+download and install ffmpeg from https://www.gyan.dev/ffmpeg/builds/
+
