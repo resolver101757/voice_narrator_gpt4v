@@ -7,9 +7,15 @@ import simpleaudio as sa
 import errno
 from elevenlabs import generate, play, set_api_key, voices
 
-client = OpenAI()
+with open('api_keys.json', 'r') as file:
+    config = json.load(file)
 
-set_api_key(os.environ.get("ELEVENLABS_API_KEY"))
+openai_api_key = config['OPENAI_API_KEY']
+elevenlabs_api_key = config['ELEVENLABS_API_KEY']
+
+client = OpenAI(api_key=openai_api_key)
+
+set_api_key(elevenlabs_api_key)
 
 def encode_image(image_path):
     while True:
@@ -25,7 +31,7 @@ def encode_image(image_path):
 
 
 def play_audio(text):
-    audio = generate(text, voice=os.environ.get("ELEVENLABS_VOICE_ID"))
+    audio = generate(text, voice="vrMpnYv0wOBVtq1QuY6J")
 
     unique_id = base64.urlsafe_b64encode(os.urandom(30)).decode("utf-8").rstrip("=")
     dir_path = os.path.join("narration", unique_id)

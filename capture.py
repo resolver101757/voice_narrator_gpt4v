@@ -3,6 +3,9 @@ import time
 from PIL import Image
 import numpy as np
 import os
+import json
+
+
 
 # Folder
 folder = "frames"
@@ -20,6 +23,13 @@ if not cap.isOpened():
 
 # Wait for the camera to initialize and adjust light levels
 time.sleep(2)
+
+with open('api_keys.json', 'r') as file:
+    config = json.load(file)
+
+openai_api_key = config['OPENAI_API_KEY']
+elevenlabs_api_key = config['ELEVENLABS_API_KEY']
+
 
 while True:
     ret, frame = cap.read()

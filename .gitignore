@@ -3,3 +3,5 @@
 /narration
 /frames/*
 !/frames/.gitkeep
+api_keys.json
+ff*.exe
